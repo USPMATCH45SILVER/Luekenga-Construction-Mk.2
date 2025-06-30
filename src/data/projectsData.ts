@@ -31,7 +31,7 @@ export const PROJECTS: Project[] = [
     title: 'No Cut Corners',
     location: 'Meridian, ID',
     year: '2023',
-    description: 'freshly poured concrete steps neatly held in place by robust timber formwork and tensioned tie rods, ensuring precise rise and run compliance.',
+    description: 'Freshly poured concrete steps neatly held in place by robust timber formwork and tensioned tie rods, ensuring precise rise and run compliance.',
     image: '/Steps Project.jpg',
     fallbackImage: 'https://images.pexels.com/photos/1396132/pexels-photo-1396132.jpeg?auto=compress&cs=tinysrgb&w=800&h=600',
     category: 'Roofing'
