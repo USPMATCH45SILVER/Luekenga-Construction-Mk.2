@@ -34,7 +34,7 @@ export const PROJECTS: Project[] = [
     description: 'Freshly poured concrete steps neatly held in place by robust timber formwork and tensioned tie rods, ensuring precise rise and run compliance.',
     image: '/Steps Project.jpg',
     fallbackImage: 'https://images.pexels.com/photos/1396132/pexels-photo-1396132.jpeg?auto=compress&cs=tinysrgb&w=800&h=600',
-    category: 'Roofing'
+    category: 'Concrete'
   },
   {
     title: 'Foundation & Concrete Work',
@@ -79,7 +79,7 @@ export const PROJECTS: Project[] = [
     description: 'High-end custom shower installation with premium tile work, built-in shelving, and meticulous attention to detail.',
     image: '/Shower Room.jpg',
     fallbackImage: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800&h=600',
-    category: 'Bathroom'
+    category: 'Remodeling'
   },
   {
     title: 'Cascade Patio Construction',
