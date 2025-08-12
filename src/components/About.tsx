@@ -1,12 +1,19 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Award, Shield, Users, Clock } from 'lucide-react';
-import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
-import { scrollToContact } from '../utils/scrollUtils';
+import useIntersectionObserver from '../hooks/useIntersectionObserver'; // adjust path
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [visibleAchievements, setVisibleAchievements] = useState<Set<number>>(new Set());
   const sectionRef = useRef<HTMLElement>(null);
+
+  // ✅ Added bulletPoints so it won't throw a ReferenceError
+  const bulletPoints = [
+    'Licensed & insured contractor',
+    '30+ years of hands-on experience',
+    'Dedicated to quality craftsmanship',
+    'Clear communication from start to finish',
+  ];
 
   const achievements = [
     {
@@ -30,7 +37,7 @@ const About = () => {
       description: 'Proven track record of completing home projects on schedule and within budget.'
     }
   ];
-  
+
   const handleIntersection = useCallback((entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -39,11 +46,11 @@ const About = () => {
         } else {
           const index = parseInt(entry.target.getAttribute('data-index') || '0');
           setVisibleAchievements(prev => new Set(prev).add(index));
-          
-          // Clean up will-change after animation
-          setTimeout(() => {
+
+          // Use animationend event instead of timeout for accuracy
+          entry.target.addEventListener('animationend', () => {
             entry.target.classList.add('animate-complete');
-          }, 500);
+          }, { once: true });
         }
       }
     });
@@ -59,15 +66,19 @@ const About = () => {
     if (sectionRef.current) {
       observe(sectionRef.current);
     }
-
     const achievementCards = sectionRef.current?.querySelectorAll('.achievement-card');
     achievementCards?.forEach((card) => observe(card));
   }, [observe]);
+
+  const scrollToContact = () => {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <section ref={sectionRef} id="about" className="py-20 bg-gray-50">
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Left Column */}
           <div className={`smooth-transition ${
             isVisible ? 'animate-fade-in-left opacity-100' : 'opacity-0 translate-x-8'
           }`}>
@@ -92,7 +103,9 @@ const About = () => {
                   }`}
                   style={{ animationDelay: `${0.3 + (index * 0.1)}s` }}
                 >
-                  <div className={`w-2 h-2 ${index % 2 === 0 ? 'bg-red-600' : 'bg-blue-600'} rounded-full mr-3 flex-shrink-0`}></div>
+                  <div 
+                    className={`w-2 h-2 ${index % 2 === 0 ? 'bg-red-600' : 'bg-blue-600'} rounded-full mr-3 flex-shrink-0`}
+                  />
                   <span className="font-semibold">{item}</span>
                 </div>
               ))}
@@ -108,6 +121,7 @@ const About = () => {
             </button>
           </div>
 
+          {/* Right Column */}
           <div className={`grid grid-cols-2 gap-6 smooth-transition ${
             isVisible ? 'animate-fade-in-right opacity-100' : 'opacity-0 translate-x-8'
           }`} style={{ animationDelay: '0.3s' }}>
@@ -120,14 +134,14 @@ const About = () => {
                     ? 'fade-in-observer visible' 
                     : 'fade-in-observer'
                 }`}
-                style={{ 
-                  transitionDelay: `${index * 0.1}s`
-                }}
+                style={{ transitionDelay: `${index * 0.1}s` }}
               >
                 <div className="p-3 bg-gradient-to-r from-red-600 to-red-700 rounded-lg w-fit mb-4 hover-lift smooth-transition gpu-accelerated">
-                  <achievement.icon className="h-6 w-6 text-white" />
+                  <achievement.icon className="h-6 w-6 text-white" aria-hidden="true" />
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2 hover:text-red-600 smooth-transition">{achievement.title}</h3>
+                <h3 className="text-lg font-bold text-gray-900 mb-2 hover:text-red-600 smooth-transition">
+                  {achievement.title}
+                </h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{achievement.description}</p>
               </div>
             ))}
