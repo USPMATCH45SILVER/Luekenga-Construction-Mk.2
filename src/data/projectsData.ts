@@ -31,10 +31,10 @@ export const PROJECTS: Project[] = [
     title: 'No Cut Corners',
     location: 'Meridian, ID',
     year: '2023',
-    description: 'Freshly poured concrete steps neatly held in place by robust timber formwork and tensioned tie rods, ensuring precise rise and run compliance.',
+    description: 'freshly poured concrete steps neatly held in place by robust timber formwork and tensioned tie rods, ensuring precise rise and run compliance. The sub-base has been professionally prepared, with compacted aggregate and chamfered edges ready for final finishing, while plastic sheeting protects the white brick façade from overspray. Surrounding soil is graded to facilitate proper drainage, and all form supports are securely braced to maintain alignment during curing. The smooth, even trowel finish on each riser and tread exemplifies our dedication to structural integrity and refined aesthetics.',
     image: '/Steps Project.jpg',
     fallbackImage: 'https://images.pexels.com/photos/1396132/pexels-photo-1396132.jpeg?auto=compress&cs=tinysrgb&w=800&h=600',
-    category: 'Concrete'
+    category: 'Roofing'
   },
   {
     title: 'Foundation & Concrete Work',
@@ -79,7 +79,7 @@ export const PROJECTS: Project[] = [
     description: 'High-end custom shower installation with premium tile work, built-in shelving, and meticulous attention to detail.',
     image: '/Shower Room.jpg',
     fallbackImage: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800&h=600',
-    category: 'Remodeling'
+    category: 'Bathroom'
   },
   {
     title: 'Cascade Patio Construction',

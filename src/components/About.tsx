@@ -30,14 +30,7 @@ const About = () => {
       description: 'Proven track record of completing home projects on schedule and within budget.'
     }
   ];
-
-  const bulletPoints = [
-    'Over 500 successful residential projects completed',
-    'Licensed, bonded, and fully insured',
-    '100% customer satisfaction guarantee',
-    'Free consultations and detailed estimates'
-  ];
-
+  
   const handleIntersection = useCallback((entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
